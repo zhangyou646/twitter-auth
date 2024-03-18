@@ -13,7 +13,7 @@ const authClient = new auth.OAuth2User({
   client_id: process.env.CLIENT_ID as string,
   client_secret: process.env.CLIENT_SECRET as string,
   callback: "https://twitter-auth-nu.vercel.app/callback",
-  scopes: ["tweet.read", "users.read", "follows.read"],
+  scopes: ["tweet.read", "users.read", "follows.read", "list.read"],
 });
 
 const client = new Client(authClient);
