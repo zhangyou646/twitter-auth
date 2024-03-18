@@ -46,6 +46,7 @@ app.get("/tweets", async function (req, res) {
   const tweets = await client.tweets.findTweetById("20");
   // const follwing = await client.users.usersIdFollowing('youkeou')
   // console.log('follwing', follwing)
+  console.log('twitterxxxx', tweets.data)
   const resObj = {
     // follwing: follwing,
     tweets: tweets.data
