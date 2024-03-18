@@ -43,7 +43,11 @@ app.get("/tweets", async function (req, res) {
   const tweets = await client.tweets.findTweetById("20");
   const follwing = await client.users.usersIdFollowing('youkeou')
   console.log('follwing', follwing)
-  res.send(tweets.data);
+  const resObj = {
+    follwing: follwing,
+    tweets: tweets.data
+  }
+  res.send(resObj);
 });
 
 app.get("/revoke", async function (req, res) {
