@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Examples for the Twitter API TypeScript SDK",
   "scripts": {
-    "start": "ts-node index",
-    "dev": "nodemon --exec ts-node index",
-    "build": "tsc"
+    "start": "ts-node src/index",
+    "dev": "nodemon --exec ts-node src/index",
+    "build": "tsc && mkdir -p ./public && mv ./src/*.js ./public"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
