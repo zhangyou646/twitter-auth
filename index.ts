@@ -44,10 +44,10 @@ app.get("/login", async function (req, res) {
 
 app.get("/tweets", async function (req, res) {
   const tweets = await client.tweets.findTweetById("20");
-  const follwing = await client.users.usersIdFollowing('youkeou')
-  console.log('follwing', follwing)
+  // const follwing = await client.users.usersIdFollowing('youkeou')
+  // console.log('follwing', follwing)
   const resObj = {
-    follwing: follwing,
+    // follwing: follwing,
     tweets: tweets.data
   }
   res.send(resObj);
