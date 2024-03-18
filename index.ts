@@ -13,6 +13,7 @@ const authClient = new auth.OAuth2User({
   client_id: process.env.CLIENT_ID as string,
   client_secret: process.env.CLIENT_SECRET as string,
   callback: "https://twitter-auth-nu.vercel.app/callback",
+  // callback: "http://127.0.0.1:3000/callback",
   scopes: ["tweet.read", "users.read", "follows.read", "list.read"],
 });
 
@@ -23,7 +24,9 @@ const STATE = "my-state";
 app.get("/callback", async function (req, res) {
   try {
     const { code, state } = req.query;
+    console.log('code', code)
     if (state !== STATE) return res.status(500).send("State isn't matching");
+
     await authClient.requestAccessToken(code as string);
     res.redirect("/tweets");
   } catch (error) {
