@@ -26,8 +26,8 @@ app.get("/callback", async function (req, res) {
     const { code, state } = req.query;
     console.log('code', code)
     if (state !== STATE) return res.status(500).send("State isn't matching");
-
     await authClient.requestAccessToken(code as string);
+    console.log('callback -->token', authClient.token)
     res.redirect("/tweets");
   } catch (error) {
     console.log(error);
@@ -43,10 +43,13 @@ app.get("/login", async function (req, res) {
 });
 
 app.get("/tweets", async function (req, res) {
+  console.log('token 11', authClient.token)
+  console.log('version', client.twitterApiOpenApiVersion)
   const tweets = await client.tweets.findTweetById("20");
   // const follwing = await client.users.usersIdFollowing('youkeou')
   // console.log('follwing', follwing)
   console.log('twitterxxxx', tweets.data)
+
   const resObj = {
     // follwing: follwing,
     tweets: tweets.data
