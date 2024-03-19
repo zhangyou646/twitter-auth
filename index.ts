@@ -45,6 +45,8 @@ app.get("/login", async function (req, res) {
 app.get("/tweets", async function (req, res) {
   console.log('token 11', authClient.token)
   console.log('version', client.twitterApiOpenApiVersion)
+  const me = await client.users.findMyUser()
+  console.log('me-->', me)
   const tweets = await client.tweets.findTweetById("20");
   // const follwing = await client.users.usersIdFollowing('youkeou')
   // console.log('follwing', follwing)
